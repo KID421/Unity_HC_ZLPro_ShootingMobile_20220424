@@ -24,6 +24,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     // 喚醒事件：播放遊戲時執行一次，初始化設定
     private void Awake()
     {
+        // 螢幕.設定解析度(寬，高，是否全螢幕)
+        Screen.SetResolution(1024, 576, false);
+
         // Photon 連線 的 連線使用設定
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -88,6 +91,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;        // 當前房間最大人數
 
         textCountPlayer.text = "連線人數 " + currentCount + " / " + maxCount;
+
+        LoadGameScene(currentCount, maxCount);
     }
 
     // 其他玩家進入房間
@@ -99,5 +104,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;        // 當前房間最大人數
 
         textCountPlayer.text = "連線人數 " + currentCount + " / " + maxCount;
+
+        LoadGameScene(currentCount, maxCount);
+    }
+
+    /// <summary>
+    /// 載入遊戲場景
+    /// </summary>
+    private void LoadGameScene(int currentCount, int maxCount)
+    {
+        // Clean Code 乾淨程式
+        // 1. 不重複 - 問題：影響維護性
+        // 當進入房間的玩家 等於 最大房間人數時 就進入遊戲場景
+        if (currentCount == maxCount)
+        {
+            // 透過 Photon 連線讓玩家 載入指定場景(場景名稱)
+            // 場景必須放在 Build Settings 內
+            PhotonNetwork.LoadLevel("遊戲場景");
+        }
     }
 }
