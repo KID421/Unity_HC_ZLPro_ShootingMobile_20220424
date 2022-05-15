@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 // namespace 命名空間：程式區塊
 namespace KID
@@ -7,10 +8,8 @@ namespace KID
     /// 控制系統：荒野亂鬥移動功能
     /// 虛擬搖桿控制角色移動
     /// </summary>
-    public class SystemControl : MonoBehaviour
+    public class SystemControl : MonoBehaviourPun
     {
-        [SerializeField, Header("虛擬搖桿")]
-        private Joystick joystick;
         [SerializeField, Header("移動速度"), Range(0, 300)]
         private float speed = 3.5f;
         [SerializeField, Header("角色方向圖示")]
@@ -21,7 +20,14 @@ namespace KID
         private float speedTurn = 1.5f;
         [SerializeField, Header("動畫參數跑步")]
         private string parameterWalk = "開關跑步";
+        [SerializeField, Header("畫布物件")]
+        private GameObject goCanvas;
+        [SerializeField, Header("畫布玩家資訊件")]
+        private GameObject goCanvasInfo;
+        [SerializeField, Header("角色方向圖示件")]
+        private GameObject goDirection;
 
+        private Joystick joystick;
         private Rigidbody rig;
         private Animator ani;
 
@@ -29,6 +35,13 @@ namespace KID
         {
             rig = GetComponent<Rigidbody>();
             ani = GetComponent<Animator>();
+
+            if (photonView.IsMine)
+            {
+                Instantiate(goCanvasInfo);
+                traDirectionIcon = Instantiate(goDirection).transform;
+                joystick = Instantiate(goCanvas).transform.Find("Dynamic Joystick").GetComponent<Joystick>();
+            }
         }
 
         private void Update()

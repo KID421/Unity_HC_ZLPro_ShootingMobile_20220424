@@ -88,6 +88,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;        // 當前房間最大人數
 
         textCountPlayer.text = "連線人數 " + currentCount + " / " + maxCount;
+
+        if (currentCount == 3) PhotonNetwork.LoadLevel("遊戲場景");
     }
 
     // 其他玩家進入房間
@@ -99,5 +101,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;        // 當前房間最大人數
 
         textCountPlayer.text = "連線人數 " + currentCount + " / " + maxCount;
+
+        if (currentCount == 3) PhotonNetwork.LoadLevel("遊戲場景");
     }
 }
