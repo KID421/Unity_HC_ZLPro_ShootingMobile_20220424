@@ -11,12 +11,13 @@ namespace KID
         [SerializeField, Header("位移")]
         private Vector3 v3Offset;
         private string namePlayer = "戰士";
-        private Transform traPlayer;
+        
+        public Transform traPlayer;
 
         private void Awake()
         {
             // 玩家變形元件 = 遊戲物件.尋找(物件名稱).變形元件
-            traPlayer = GameObject.Find(namePlayer).transform;
+            // traPlayer = GameObject.Find(namePlayer).transform;
         }
 
         private void Update()

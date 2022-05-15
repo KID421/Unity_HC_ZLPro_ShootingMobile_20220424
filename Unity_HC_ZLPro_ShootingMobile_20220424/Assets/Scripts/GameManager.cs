@@ -29,16 +29,16 @@ namespace KID
             traSpawnPointList = traSpawnPoint.ToList();     // 陣列轉為清單資料結構
 
             // 如果是連線進入的玩家就在伺服器生成角色物件
-            if (photonView.IsMine)
-            {
-                int indexRandom = Random.Range(0, traSpawnPointList.Count);     // 取得隨機清單(0，清單的長度)
-                Transform tra = traSpawnPointList[indexRandom];                 // 取得隨機座標
+            // if (photonView.IsMine)
+            // {
+            int indexRandom = Random.Range(0, traSpawnPointList.Count);     // 取得隨機清單(0，清單的長度)
+            Transform tra = traSpawnPointList[indexRandom];                 // 取得隨機座標
 
-                // Photon 伺服器.生成(物件.名稱，座標，角度)
-                PhotonNetwork.Instantiate(goCharacter.name, tra.position, tra.rotation);
+            // Photon 伺服器.生成(物件.名稱，座標，角度)
+            PhotonNetwork.Instantiate(goCharacter.name, tra.position, tra.rotation);
 
-                traSpawnPointList.RemoveAt(indexRandom);                        // 刪除已經取得過的生成座標資料
-            }
+            traSpawnPointList.RemoveAt(indexRandom);                        // 刪除已經取得過的生成座標資料
+            // }
         }
     }
 }
