@@ -8,8 +8,9 @@ namespace KID
     /// </summary>
     public class SystemAttack : MonoBehaviour
     {
-        [SerializeField, Header("發射按鈕")]
-        private Button btnFire;
+        [HideInInspector]
+        public Button btnFire;
+
         [SerializeField, Header("子彈")]
         private GameObject goBullet;
         [SerializeField, Header("子彈最大數量")]

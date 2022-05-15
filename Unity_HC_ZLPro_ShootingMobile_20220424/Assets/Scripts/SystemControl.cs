@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using Cinemachine;
+using UnityEngine.UI;
 
 // namespace 命名空間：程式區塊
 namespace KID
@@ -31,11 +32,13 @@ namespace KID
         private Joystick joystick;
         private Transform traDirectionIcon;
         private CinemachineVirtualCamera cvc;
+        private SystemAttack systemAttack;
 
         private void Awake()
         {
             rig = GetComponent<Rigidbody>();
             ani = GetComponent<Animator>();
+            systemAttack = GetComponent<SystemAttack>();
 
             // 如果是連線進入的玩家 就生成玩家需要的物件
             if (photonView.IsMine)
@@ -46,7 +49,9 @@ namespace KID
                 traDirectionIcon = Instantiate(goDirection).transform;                                              // 取得角色方向圖示
 
                 // transform.Find(子物件名稱) - 透過名稱搜尋子物件
-                joystick = Instantiate(goCanvas).transform.Find("Dynamic Joystick").GetComponent<Joystick>();       // 取得畫布內的虛擬搖桿
+                GameObject tempCanvas = Instantiate(goCanvas);
+                joystick = tempCanvas.transform.Find("Dynamic Joystick").GetComponent<Joystick>();       // 取得畫布內的虛擬搖桿
+                systemAttack.btnFire = tempCanvas.transform.Find("發射").GetComponent<Button>();
 
                 cvc = GameObject.Find("CM 管理器").GetComponent<CinemachineVirtualCamera>();                         // 取得攝影機 CM 管理器
                 cvc.Follow = transform;                                                                             // 指定追蹤物件
