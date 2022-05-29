@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Cinemachine;
 using UnityEngine.UI;
+using ExitGames.Client.Photon.StructWrapping;
 
 // namespace 命名空間：程式區塊
 namespace KID
@@ -59,6 +60,7 @@ namespace KID
                 cvc.Follow = transform;                                                                             // 指定追蹤物件
 
                 damageManager.imgHp = GameObject.Find("圖片血量").GetComponent<Image>();
+                damageManager.textHp = GameObject.Find("文字血量").GetComponent<Text>();
             }
             // 否則 不是進入的玩家 就關閉控制系統，避免控制到多個物件
             else

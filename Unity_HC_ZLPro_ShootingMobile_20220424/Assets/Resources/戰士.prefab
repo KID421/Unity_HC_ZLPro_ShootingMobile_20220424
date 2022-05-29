@@ -2459,6 +2459,7 @@ MonoBehaviour:
   hp: 200
   goVFXHit: {fileID: 4960404943515269695, guid: 809a384219d32b148be71ce4d3d9620b, type: 3}
   imgHp: {fileID: 0}
+  textHp: {fileID: 0}
 --- !u!1 &4138231700718301154
 GameObject:
   m_ObjectHideFlags: 0

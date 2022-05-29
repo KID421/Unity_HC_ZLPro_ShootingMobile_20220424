@@ -20,10 +20,14 @@ namespace KID
 
         [HideInInspector]
         public Image imgHp;
+        [HideInInspector]
+        public Text textHp;
 
         private void Awake()
         {
             hpMax = hp;
+
+            if (photonView.IsMine) textHp.text = hp.ToString();
         }
 
         // 進入
@@ -57,6 +61,10 @@ namespace KID
         {
             hp -= 20;
             imgHp.fillAmount = hp / hpMax;
+
+            // 血量 = 數學.夾住(血量，最小值，最大值)
+            hp = Mathf.Clamp(hp, 0, hpMax);
+            textHp.text = hp.ToString();
 
             // 連線.生成(特效，擊中座標，角度)
             PhotonNetwork.Instantiate(goVFXHit.name, posHit, Quaternion.identity);
