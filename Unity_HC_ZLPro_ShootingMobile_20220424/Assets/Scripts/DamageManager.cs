@@ -17,6 +17,8 @@ namespace KID
         private float hpMax;
 
         private string nameBullet = "子彈";
+
+        [HideInInspector]
         public Image imgHp;
 
         private void Awake()
@@ -27,6 +29,9 @@ namespace KID
         // 進入
         private void OnCollisionEnter(Collision collision)
         {
+            // 如果 不是自己的玩家物件 就跳出
+            if (!photonView.IsMine) return;
+
             // 如果 碰撞物件名稱 包含 子彈 就處理 受傷
             if (collision.gameObject.name.Contains(nameBullet))
             {
