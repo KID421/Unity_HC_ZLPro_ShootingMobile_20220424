@@ -621,7 +621,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+  - {fileID: 2100000, guid: 69b70f1b3b7780844a51c3eccce41db6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -923,7 +923,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+  - {fileID: 2100000, guid: 69b70f1b3b7780844a51c3eccce41db6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1065,7 +1065,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+  - {fileID: 2100000, guid: 69b70f1b3b7780844a51c3eccce41db6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1207,7 +1207,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+  - {fileID: 2100000, guid: 69b70f1b3b7780844a51c3eccce41db6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1580,7 +1580,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+  - {fileID: 2100000, guid: 69b70f1b3b7780844a51c3eccce41db6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2011,7 +2011,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860793eb3324391468f1c120a75ec049, type: 3}
+  - {fileID: 2100000, guid: 69b70f1b3b7780844a51c3eccce41db6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2346,6 +2346,7 @@ MonoBehaviour:
   goCanvas: {fileID: 8967773434874875498, guid: ca26efab50344574598e930dbfc1741d, type: 3}
   goCanvasPlayerInfo: {fileID: 2038395994256973977, guid: 033d8e8bec7aafb48930985e4449fcc2, type: 3}
   goDirection: {fileID: 4595121206456098734, guid: a7566c76d43e7644886b8c8da4108691, type: 3}
+  traDirectionIcon: {fileID: 0}
 --- !u!114 &4138231700531319711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2458,6 +2459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 200
   goVFXHit: {fileID: 4960404943515269695, guid: 809a384219d32b148be71ce4d3d9620b, type: 3}
+  shaderDissolve: {fileID: -6465566751694194690, guid: 0a044f0ddcd511c4c834e5f31641920e, type: 3}
   imgHp: {fileID: 0}
   textHp: {fileID: 0}
 --- !u!1 &4138231700718301154
