@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using TMPro;
+using System.Collections;
 
 namespace KID
 {
@@ -21,13 +23,29 @@ namespace KID
         [HideInInspector]
         public Image imgHp;
         [HideInInspector]
-        public Text textHp;
+        public TextMeshProUGUI textHp;
+
+        public Material materialNew;
+        public Shader shader;
+
+        SkinnedMeshRenderer[] smr;
 
         private void Awake()
         {
             hpMax = hp;
 
-            if (photonView.IsMine) textHp.text = hp.ToString();
+            smr = GetComponentsInChildren<SkinnedMeshRenderer>();
+            materialNew = new Material(shader);
+
+            for (int i = 0; i < smr.Length; i++)
+            {
+                smr[i].material = materialNew;
+            }
+
+            if (photonView.IsMine)
+            {
+                textHp.text = hp.ToString();
+            }
         }
 
         // 進入
@@ -68,6 +86,26 @@ namespace KID
 
             // 連線.生成(特效，擊中座標，角度)
             PhotonNetwork.Instantiate(goVFXHit.name, posHit, Quaternion.identity);
+
+            if (hp <= 0) photonView.RPC("Dead", RpcTarget.All);
+        }
+
+        [PunRPC]
+        private void Dead()
+        {
+            StartCoroutine(Dissolve());
+        }
+
+        private IEnumerator Dissolve()
+        {
+            float valueDissolve = 5;
+
+            for (int i = 0; i < 10; i++)
+            {
+                valueDissolve -= 0.6f;
+                materialNew.SetFloat("dissolve", valueDissolve);
+                yield return new WaitForSeconds(0.05f);
+            }
         }
     }
 }

@@ -15,6 +15,8 @@ namespace KID
 
         private void Awake()
         {
+            if (!photonView.IsMine) return;
+
             Invoke("DestroyDelay", timeDestroy);
         }
 
@@ -30,7 +32,7 @@ namespace KID
         private void OnCollisionEnter(Collision collision)
         {
             // 如果 需要碰撞後刪除 就 連線.刪除
-            if (collisionDestroy)
+            if (photonView.IsMine && collisionDestroy)
             {
                 PhotonNetwork.Destroy(gameObject);
             }
