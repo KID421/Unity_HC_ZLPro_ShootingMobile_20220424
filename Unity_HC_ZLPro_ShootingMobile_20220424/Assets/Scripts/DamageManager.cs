@@ -120,6 +120,20 @@ namespace KID
                 materialDissolve.SetFloat("dissolve", valueDissolve);       // 更新著色器屬性，注意要控制 Reference
                 yield return new WaitForSeconds(0.08f);                     // 等待
             }
+
+            ReturnToLobby();
+        }
+
+        /// <summary>
+        /// 回到大廳
+        /// </summary>
+        private void ReturnToLobby()
+        {
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.LeaveRoom();              // 離開房間
+                PhotonNetwork.LoadLevel("遊戲大廳");     // 回到大廳場景
+            }
         }
     }
 }
