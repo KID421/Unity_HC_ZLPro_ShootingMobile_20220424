@@ -25,6 +25,8 @@ namespace KID
 
         private void Awake()
         {
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+
             traSpawnPointList = new List<Transform>();      // 新增 清單物件
             traSpawnPointList = traSpawnPoint.ToList();     // 陣列轉為清單資料結構
 

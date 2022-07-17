@@ -101,6 +101,8 @@ namespace KID
         [PunRPC]
         private void Dead()
         {
+            if (!photonView.IsMine) return;
+
             StartCoroutine(Dissolve());
         }
 
@@ -120,6 +122,9 @@ namespace KID
                 materialDissolve.SetFloat("dissolve", valueDissolve);       // 更新著色器屬性，注意要控制 Reference
                 yield return new WaitForSeconds(0.08f);                     // 等待
             }
+
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LoadLevel("遊戲大廳");
         }
     }
 }
